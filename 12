@@ -1,0 +1,20 @@
+h_fp = open("Hamlet_by_Shakespeare.txt", "r");
+
+word_dict = dict();
+
+for line in h_fp.readlines():
+  for word in line.strip().split():
+    word = word.strip(" .,;?[]\"|':-").lower();
+
+    if word_dict.get(word) is not None:
+      count = word_dict[word]
+    else:
+      count = 0;
+    word_dict[word] = count + 1;
+
+for key in word_dict:
+  if word_dict[key] > 400 :
+    print("{" + key +"}", str(word_dict[key]) + "회")  
+  
+
+h_fp.close();
